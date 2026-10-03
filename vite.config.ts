@@ -19,6 +19,10 @@ export default defineConfig(() => {
           if (fs.existsSync(indexPath)) {
             fs.copyFileSync(indexPath, notFoundPath);
           }
+          const docsPath = path.resolve(__dirname, 'docs');
+          if (fs.existsSync(distPath)) {
+            fs.cpSync(distPath, docsPath, { recursive: true, force: true });
+          }
         },
       },
     ],
